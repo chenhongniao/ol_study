@@ -1,0 +1,156 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<WMS_Capabilities xmlns="http://www.opengis.net/wms" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.3.0" updateSequence="158" xsi:schemaLocation="http://www.opengis.net/wms http://localhost:8084/geoserver/schemas/wms/1.3.0/capabilities_1_3_0.xsd">
+<Service>
+<Name>WMS</Name>
+<Title>GeoServer Web Map Service</Title>
+<Abstract>
+A compliant implementation of WMS plus most of the SLD extension (dynamic styling). Can also generate PDF, SVG, KML, GeoRSS
+</Abstract>
+<KeywordList>
+<Keyword>WFS</Keyword>
+<Keyword>WMS</Keyword>
+<Keyword>GEOSERVER</Keyword>
+</KeywordList>
+<OnlineResource xlink:type="simple" xlink:href="http://geoserver.org"/>
+<ContactInformation>
+<ContactPersonPrimary>
+<ContactPerson>Claudius Ptolomaeus</ContactPerson>
+<ContactOrganization>The Ancient Geographers</ContactOrganization>
+</ContactPersonPrimary>
+<ContactPosition>Chief Geographer</ContactPosition>
+<ContactAddress>
+<AddressType>Work</AddressType>
+<Address/>
+<City>Alexandria</City>
+<StateOrProvince/>
+<PostCode/>
+<Country>Egypt</Country>
+</ContactAddress>
+<ContactVoiceTelephone/>
+<ContactFacsimileTelephone/>
+<ContactElectronicMailAddress>claudius.ptolomaeus@gmail.com</ContactElectronicMailAddress>
+</ContactInformation>
+<Fees>NONE</Fees>
+<AccessConstraints>NONE</AccessConstraints>
+</Service>
+<Capability>
+<Request>
+<GetCapabilities>
+<Format>text/xml</Format>
+<DCPType>
+<HTTP>
+<Get>
+<OnlineResource xlink:type="simple" xlink:href="http://localhost:8084/geoserver/ows?SERVICE=WMS&"/>
+</Get>
+<Post>
+<OnlineResource xlink:type="simple" xlink:href="http://localhost:8084/geoserver/ows?SERVICE=WMS&"/>
+</Post>
+</HTTP>
+</DCPType>
+</GetCapabilities>
+<GetMap>
+<Format>image/png</Format>
+<Format>application/atom+xml</Format>
+<Format>application/json;type=utfgrid</Format>
+<Format>application/pdf</Format>
+<Format>application/rss+xml</Format>
+<Format>application/vnd.google-earth.kml+xml</Format>
+<Format>
+application/vnd.google-earth.kml+xml;mode=networklink
+</Format>
+<Format>application/vnd.google-earth.kmz</Format>
+<Format>image/geotiff</Format>
+<Format>image/geotiff8</Format>
+<Format>image/gif</Format>
+<Format>image/jpeg</Format>
+<Format>image/png; mode=8bit</Format>
+<Format>image/svg+xml</Format>
+<Format>image/tiff</Format>
+<Format>image/tiff8</Format>
+<Format>image/vnd.jpeg-png</Format>
+<Format>text/html; subtype=openlayers</Format>
+<Format>text/html; subtype=openlayers2</Format>
+<Format>text/html; subtype=openlayers3</Format>
+<DCPType>
+<HTTP>
+<Get>
+<OnlineResource xlink:type="simple" xlink:href="http://localhost:8084/geoserver/ows?SERVICE=WMS&"/>
+</Get>
+</HTTP>
+</DCPType>
+</GetMap>
+<GetFeatureInfo>
+<Format>text/plain</Format>
+<Format>application/vnd.ogc.gml</Format>
+<Format>text/xml</Format>
+<Format>application/vnd.ogc.gml/3.1.1</Format>
+<Format>text/xml; subtype=gml/3.1.1</Format>
+<Format>text/html</Format>
+<Format>application/json</Format>
+<DCPType>
+<HTTP>
+<Get>
+<OnlineResource xlink:type="simple" xlink:href="http://localhost:8084/geoserver/ows?SERVICE=WMS&"/>
+</Get>
+</HTTP>
+</DCPType>
+</GetFeatureInfo>
+</Request>
+<Exception>
+<Format>XML</Format>
+<Format>INIMAGE</Format>
+<Format>BLANK</Format>
+<Format>JSON</Format>
+</Exception>
+<Layer>
+<Title>GeoServer Web Map Service</Title>
+<Abstract>
+A compliant implementation of WMS plus most of the SLD extension (dynamic styling). Can also generate PDF, SVG, KML, GeoRSS
+</Abstract>
+ <!-- All supported EPSG projections: -->
+<!-- 省略 -->
+<CRS>EPSG:3857</CRS>
+<!-- 省略 -->
+<CRS>EPSG:4326</CRS>
+<!-- 省略 -->
+<CRS>CRS:84</CRS>
+<EX_GeographicBoundingBox>
+<westBoundLongitude>-180.0</westBoundLongitude>
+<eastBoundLongitude>180.0</eastBoundLongitude>
+<southBoundLatitude>-90.0</southBoundLatitude>
+<northBoundLatitude>90.0</northBoundLatitude>
+</EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-180.0" miny="-90.0" maxx="180.0" maxy="90.0"/>
+<!-- 省略 -->
+<Layer queryable="1" opaque="0">
+<Name>nyc:nyc_roads</Name>
+<Title>nyc_roads</Title>
+<Abstract/>
+<KeywordList>
+<Keyword>features</Keyword>
+<Keyword>nyc_roads</Keyword>
+</KeywordList>
+<CRS>EPSG:2908</CRS>
+<CRS>CRS:84</CRS>
+<EX_GeographicBoundingBox>
+<westBoundLongitude>-74.00083696924521</westBoundLongitude>
+<eastBoundLongitude>-73.97235840001699</eastBoundLongitude>
+<southBoundLatitude>40.73668796412016</southBoundLatitude>
+<northBoundLatitude>40.76948947044791</northBoundLatitude>
+</EX_GeographicBoundingBox>
+<BoundingBox CRS="CRS:84" minx="-74.00083696924521" miny="40.73668796412016" maxx="-73.97235840001699" maxy="40.76948947044791"/>
+<BoundingBox CRS="EPSG:2908" minx="984018.1663741902" miny="207673.09513056703" maxx="991906.4970533887" maxy="219622.53973435296"/>
+<Style>
+<Name>line</Name>
+<Title>Default Line</Title>
+<Abstract>A sample style that draws a line</Abstract>
+<LegendURL width="20" height="20">
+<Format>image/png</Format>
+<OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="http://localhost:8084/geoserver/ows?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=nyc%3Anyc_roads"/>
+</LegendURL>
+</Style>
+</Layer>
+<!-- 省略 -->
+</Layer>
+</Capability>
+</WMS_Capabilities>

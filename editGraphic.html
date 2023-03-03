@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>编辑图形</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.2.2/ol.css">
+    <style>
+      #map {
+        width: 100%;
+        height: 600px;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>
+</head>
+<!-- 
+  1.
+    说明：这个示例同时加入了捕捉的功能，ol.interaction.Snap控件封装了图形捕捉的功能，将鼠标光标靠近图形就会触发捕捉功能。
+    但是，snap没有起任何作用？
+      OpenLayers中的Snap控件用于在编辑要素时，将要素的顶点或边缘捕捉到其他要素或图层的顶点或边缘上，以便更容易地对齐和编辑要素。
+      例如，在编辑地图上的道路时，Snap控件可以使道路的端点自动对齐到其他道路的端点，从而确保道路连接在一起。
+
+  2.
+    snap放置的位置不能像modify一样？
+        不行，因为，snap同draw一样进行了作为了click事件处理函数中的内容。因为当点击select时，draw会被移除，图形不需要重新绘制，那么snap同样也不需要重新绘制。
+ -->
+<body>
+    <div id="map"></div>
+    <form>
+        <label>Geometry type &nbsp;</label>
+        <select id="type">
+          <option value="Point">Point</option>
+          <option value="LineString">LineString</option>
+          <option value="Polygon">Polygon</option>
+          <option value="Circle">Circle</option>
+        </select>
+    </form>
+ 
+    <script>
+        // 矢量地图源
+        let vectorSource = new ol.source.Vector();
+        // 矢量地图
+        let vectorLayer = new ol.layer.Vector({
+            source: vectorSource
+        });
+ 
+        // 初始化地图
+        let map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                }),
+                vectorLayer
+            ],
+            view: new ol.View({
+                center: [0, 0],
+                zoom: 5
+            })
+        });
+ 
+        // 创建一个Modify控件
+        let modify = new ol.interaction.Modify({
+            source: vectorSource
+        });
+        // 将Modify控件加入到Map对象中
+        map.addInteraction(modify);
+ 
+        let draw, snap;
+        let typeSelect = document.getElementById('type');
+ 
+        function addInteractions(){
+            // 创建一个Draw控件，并加入到Map对象中
+            draw = new ol.interaction.Draw({
+                source: vectorSource,
+                type: typeSelect.value
+            });
+            map.addInteraction(draw);
+ 
+            // 创建一个Snap控件，并加入到Map对象中
+            snap = new ol.interaction.Snap({
+                source: vectorSource
+            });
+            map.addInteraction(snap);
+        }
+ 
+        typeSelect.addEventListener('click', () => {
+            // 移除Draw控件和Snap控件
+            map.removeInteraction(draw);
+            map.removeInteraction(snap);
+            addInteractions();
+        });
+ 
+        addInteractions();
+    </script>
+</body>
+</html>
